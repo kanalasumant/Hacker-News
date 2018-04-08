@@ -15,7 +15,7 @@ export -f FETCH_JSON_IN_PARALLEL_AND_SEND_EMAIL_IF_MATCH_OCCURS
 # A function which sends email to user defined to addresses with the matched Titles and URLs stored in the FIRST_DUMP.txt file.
 # For this script to work this function (send-email) has to be configured with the from, to addresses 
 # and also the smtp username and password, which in this case is gmail.
-function send-email() {
+function SEND_EMAIL() {
 	sendEmail -f FROM-ADDRESS -t TO-ADDRESS -u "Hacker-News Update on Javascript | Node | Golang | Elixir | Clojure | YouTube" -o message-file=./FIRST_DUMP.txt -s smtp.googlemail.com:587 -xu USERNAME -xp PASSWORD -o tls=yes
 }
 export -f send-email
@@ -26,13 +26,13 @@ export -f send-email
 function  EXECUTE_MAIN_SCRIPT() {
 	touch ./FIRST_DUMP.txt
 	curl https://hacker-news.firebaseio.com/v0/newstories.json | grep -Po '\d+' | parallel -j0 FETCH_JSON_IN_PARALLEL_AND_SEND_EMAIL_IF_MATCH_OCCURS
-	send-email
+	SEND_EMAIL
 	rm ./FIRST_DUMP.txt
 }
 export -f EXECUTE_MAIN_SCRIPT
 
 # This is the start of the script. It checks if a file by name FIRST_DUMP.txt exists and if it does, it removes it and starts the main
-# script, else it removes FIRST_DUMP.txt and starts the main script. The reason a check is performed so that if a file with same name
+# script, else it removes FIRST_DUMP.txt and starts the main script. The reason a check is performed IS, so that if a file with same name
 # already exists we want fresh matches from this session to be stored and sent through the email and do not wanna append it to the 
 # older version of this file.
 if [[ ! -f ./FIRST_DUMP.txt ]];then
