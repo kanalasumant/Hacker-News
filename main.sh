@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function FETCH_JSON_IN_PARALLEL_AND_SEND_EMAIL_IF_MATCH_OCCURS() {
 	DATA=$(curl https://hacker-news.firebaseio.com/v0/item/$1.json)
 	if [[ $(echo $DATA | grep -iP 'javascript|node|golang|elixir|clojure|youtube' | wc -l) -eq 1 ]];then
