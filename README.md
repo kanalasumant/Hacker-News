@@ -36,3 +36,18 @@ To run the script type the following command in the terminal
 ```console
 foo@bar:~$ ./main.sh
 ```
+
+## Functionality
+
+
+## Future Updates
+
+
+***NOTE: Feel free to submit PRs as new branches. I will certainly take a look at them.***
+
+### License
+
+Copyright © 2017, [Sumant Kanala](https://github.com/kanalasumant).
+Released under the [GNU General Public License v3.0](LICENSE).
+
+***
