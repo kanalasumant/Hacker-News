@@ -18,7 +18,7 @@ export -f FETCH_JSON_IN_PARALLEL_AND_SEND_EMAIL_IF_MATCH_OCCURS
 function SEND_EMAIL() {
 	sendEmail -f FROM-ADDRESS -t TO-ADDRESS -u "Hacker-News Update on Javascript | Node | Golang | Elixir | Clojure | YouTube" -o message-file=./FIRST_DUMP.txt -s smtp.googlemail.com:587 -xu USERNAME -xp PASSWORD -o tls=yes
 }
-export -f send-email
+export -f SEND_EMAIL
 
 # Function which first creates the FIRST_DUMP.txt file, fetches the latest stories pipes this output to grep,
 # which then filters the IDs and pipes them to the GNU parallel program whcih parallelizes by sending each line from the input received
