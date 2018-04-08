@@ -10,7 +10,7 @@ function FETCH_JSON_IN_PARALLEL_AND_SEND_EMAIL_IF_MATCH_OCCURS() {
 }
 export -f FETCH_JSON_IN_PARALLEL_AND_SEND_EMAIL_IF_MATCH_OCCURS
 
-function send-email() {
+function SEND_EMAIL() {
 	sendEmail -f FROM-ADDRESS -t TO-ADDRESS -u "Hacker-News Update on Javascript | Node | Golang | Elixir | Clojure | YouTube" -o message-file=./FIRST_DUMP.txt -s smtp.googlemail.com:587 -xu USERNAME -xp PASSWORD -o tls=yes
 }
 export -f send-email
@@ -18,7 +18,7 @@ export -f send-email
 function  EXECUTE_MAIN_SCRIPT() {
 	touch ./FIRST_DUMP.txt
 	curl https://hacker-news.firebaseio.com/v0/newstories.json | grep -Po '\d+' | parallel -j0 FETCH_JSON_IN_PARALLEL_AND_SEND_EMAIL_IF_MATCH_OCCURS
-	send-email
+	SEND_EMAIL
 	rm ./FIRST_DUMP.txt
 }
 export -f EXECUTE_MAIN_SCRIPT
